@@ -1,0 +1,60 @@
+# ----------------------
+# macOS system files
+# ----------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ----------------------
+# Editor folders
+# ----------------------
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ----------------------
+# Logs and crash reports
+# ----------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ----------------------
+# Dependency folders
+# ----------------------
+node_modules/
+bower_components/
+
+# ----------------------
+# Optional build tools (if you ever use SASS, Jekyll, etc.)
+# ----------------------
+dist/
+_build/
+.cache/
+out/
+build/
+
+# ----------------------
+# Temporary files
+# ----------------------
+*.tmp
+*.swp
+*~
+
+# ----------------------
+# Environment/config
+# ----------------------
+.env
+.env.local
+.env.development
+.env.production
+
+# ----------------------
+# Thumbnails / user junk
+# ----------------------
+Thumbs.db
+ehthumbs.db
+desktop.ini

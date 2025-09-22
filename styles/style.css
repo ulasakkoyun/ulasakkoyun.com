@@ -1,89 +1,113 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base styling */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background: #fff;
-  color: #333;
-  scroll-behavior: smooth;
-  transition: background 0.3s, color 0.3s;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #0f172a 0%, #0a0f1f 100%);
+  color: #e2e8f0;
+  padding-top: 400px;
 }
 
-.container {
-  padding: 1rem 2rem;
-  max-width: 800px;
-  margin: auto;
-}
-
+/* Sticky, dark header */
 header {
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent; /* Arka planı sayfa ile aynı yap */
+  padding: 20px 20px;
+  box-shadow: none;        /* Gölgeyi kaldır */
+  border-bottom: none;     /* Çizgiyi kaldır */
   text-align: center;
-  padding: 3rem 1rem;
+  z-index: 1000;
 }
 
-h1 {
-  margin-bottom: 0.5rem;
+/* Header text */
+header h1 {
+  font-size: 2.3rem;
+  color: #ffffff;
+  margin-bottom: 5px;
 }
 
-.dark {
-  background-color: #121212;
-  color: #e0e0e0;
+header p {
+  font-size: 1.1rem;
+  color: #cccccc;
 }
 
-.dark a {
-  color: #9ecbff;
+/* Content container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-ul.skills {
+/* Sections with dark card style */
+section {
+  background-color: transparent; /* Arka plan kaldırıldı */
+  padding: 0;                   /* İstersen boşlukları azaltabilirsin */
+  margin-bottom: 30px;          /* Alt boşluk kalsın */
+  border-radius: 0;             /* Kutu köşeleri düz */
+  box-shadow: none;             /* Gölge kaldırıldı */
+}
+
+/* Section titles */
+section h2, section h3 {
+  margin-bottom: 15px;
+  color: #f0f0f0;
+}
+
+/* About section text */
+.about p {
+  margin-bottom: 15px;
+}
+
+/* Skills section with darker pills */
+.skills {
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  list-style: none;
-  padding: 0;
+  gap: 12px;
+  margin-top: 10px;
 }
 
 .skills li {
-  background: #eee;
-  padding: 0.4rem 0.8rem;
-  border-radius: 5px;
+  background-color: #2c2c2c;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+}
+
+/* Projects list */
+.projects ul {
+  list-style: disc;
+  padding-left: 20px;
 }
 
 .projects li {
-  margin-bottom: 1rem;
-  transition: transform 0.2s;
-}
-.projects li:hover {
-  transform: scale(1.02);
-  background-color: #f3f3f3;
-  padding: 0.5rem;
-  border-radius: 4px;
+  margin-bottom: 15px;
 }
 
-a {
-  color: #3366cc;
+/* Contact info */
+.contact p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.contact a {
+  color: #6fa3ff;
   text-decoration: none;
 }
 
+/* Footer */
 footer {
   text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  border-top: 1px solid #ccc;
-}
-
-.dark-mode-toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: #222;
-  color: white;
-  border: none;
-  padding: 0.5rem 0.8rem;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 999;
-}
-
-.dark .skills li {
-  background: #333;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  color: #999;
 }

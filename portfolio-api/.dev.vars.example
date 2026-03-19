@@ -1,0 +1,8 @@
+# Local development values for wrangler dev.
+# Copy this file to .dev.vars and replace with your own values.
+
+ALLOWED_ORIGINS="http://localhost:8787,http://127.0.0.1:8787,https://ulasakkoyun.com,https://www.ulasakkoyun.com"
+RATE_LIMIT_PER_MINUTE="30"
+
+# Secret: do not commit real value.
+ADMIN_API_TOKEN="local"

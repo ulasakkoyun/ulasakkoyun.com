@@ -1,0 +1,40 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "portfolio-api",
+	"main": "src/index.js",
+	"compatibility_date": "2026-03-10",
+	"observability": {
+		"enabled": true
+	},
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"vars": {
+		"ALLOWED_ORIGINS": "https://ulasakkoyun.com,https://www.ulasakkoyun.com",
+		"RATE_LIMIT_PER_MINUTE": "30"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "VISITOR_KV",
+			"id": "63a4132594534868bc6437161ba81404",
+			"preview_id": "55b0218f26b041bcb4c6c957dd65e44f"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "SERIES_DB",
+			"database_name": "series-db",
+			"database_id": "57ac11c7-f048-442b-9609-9d3921768a29"
+		},
+		{
+			"binding": "MOVIES_DB",
+			"database_name": "movies-db",
+			"database_id": "01733c17-d712-4462-9a42-feb565dfa75d"
+		},
+		{
+			"binding": "BOOKS_DB",
+			"database_name": "books-db",
+			"database_id": "d8c811ca-4396-4e4a-939b-76f9260e5d60"
+		}
+	]
+}

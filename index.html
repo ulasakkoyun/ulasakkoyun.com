@@ -1,73 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ulas Akkoyun</title>
+  <meta name="keywords" content="HTML">
+  <meta name="description" content="Buraya Bakarlar ...">
+  <title>Ulaş Akkoyun</title>
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script src="https://unpkg.com/scrollreveal"></script>
 </head>
+
 <body>
 
   <header>
-    <h1>Ulas Akkoyun</h1>
-    <p>Computer Engineering Student</p>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="index.html" class="active" aria-current="page"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+      <a href="blogs.html"><i class="fas fa-pen"></i><span>Blogs</span></a>
+      <a href="movies.html"><i class="fas fa-film"></i><span>Movies</span></a>
+      <a href="series.html"><i class="fas fa-tv"></i><span>Series</span></a>
+      <a href="books.html"><i class="fas fa-book"></i><span>Books</span></a>
+    </nav>
+
   </header>
 
   <main class="container">
 
-    <section class="about">
-      <h2>About Me</h2>
-      <p>
-        As a Computer Engineering third-year student at Mugla Sitki Kocman University, my passion for computers began at the age of seven and has since evolved into a deep interest in software development.
-        Currently, I am completing my summer internship at S3M, a company specializing in network access control (NAC), cybersecurity tools, and hotspot solutions.
-        At S3M, I work on developing system-level utilities that gather system information such as IP configuration, antivirus status, and hardware diagnostics using Swift.
-        Alongside my internship, I’m actively working on my personal website, which I built from scratch using HTML, CSS, and basic JavaScript.
-        In parallel, I’m focusing on learning Swift with the goal of developing iOS applications, and I’m currently in the early stages of building an app to deepen my understanding of the iOS ecosystem.
-        I am an active member of the IEEE Computer Society, where I engage in knowledge sharing and enhance my social skills.
-      </p>
+    <div class="content-panel intro-panel">
+      <div class="about-section-container">
+        <section class="about about-card" id="about">
+          <div class="about-content">
+            <p class="about-intro">Hi, I'm Ulaş 👋</p>
+            <p>My passion for computers started when I was seven, and it grew into a strong interest in building real
+              products. I develop web and iOS applications, with a focus on creating educational tools.</p>
+            <p>During my internship at S3M, I work on system-level utilities with Swift. Outside of work, I study iOS
+              development and am an active IEEE Computer Society member.</p>
+          </div>
+        </section>
 
-      <h3>Skills</h3>
-      <ul class="skills">
-        <li>Python</li>
-        <li>Swift</li>
-        <li>Linux</li>
-        <li>Docker</li>
-        <li>Git</li>
-        <li>HTML/CSS</li>
-        <li>PowerShell</li>
-      </ul>
-    </section>
+        <div class="about-info-card">
+          <div class="info-item">
+            <span class="info-label">📍 Location</span>
+            <span class="info-value">Muğla, Turkey</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">🎓 Education</span>
+            <span class="info-value">MSKU, Computer Engineering</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">🛠️ Skills</span>
+            <span class="info-value">Swift, iOS, Web Dev</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">🎯 Currently Focus</span>
+            <span class="info-value">Educational Map App</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <section class="projects">
-      <h2>Projects</h2>
-      <ul class="projects">
-        <li>
-          <strong>Network Access Control Utility (Internship Project)</strong> — A system-level tool developed using Swift as part of my internship at S3M. It gathers real-time system data such as IP configurations, antivirus status, and hardware diagnostics to support NAC and cybersecurity operations.
-        </li>
-        <li>
-          <strong>iOS App Development (In Progress)</strong> — I’m in the early stages of developing an iOS app using Swift to strengthen my understanding of mobile app architecture and the iOS ecosystem.
-        </li>
-        <li>
-          <strong>Personal Portfolio Website</strong> — A responsive and lightweight portfolio site created entirely from scratch using HTML, CSS, and JavaScript.
-        </li>
-      </ul>
-    </section>
+    <section class="projects" id="projects">
+      <div class="project-grid">
+        <div class="project-card project-card-static">
+          <div class="project-card-content">
+            <p class="project-kicker">iOS App</p>
+            <h3 class="project-title-lg">Coming Soon</h3>
+            <p>Interactive Educational Map App</p>
+            <p>A iOS app that helps students explore and learn geography by interactively selecting city boundaries,
+              showcasing both educational impact and hands-on Swift &amp; MapKit development skills.</p>
+            <div class="appstore-badge">
+              <i class="fab fa-apple appstore-badge-icon"></i>
+              <div class="appstore-badge-text">
+                <span class="appstore-badge-sub">Coming Soon to the</span>
+                <span class="appstore-badge-title">App Store</span>
+              </div>
+            </div>
+            <p class="tags"><span>Swift</span><span>iOS</span><span>MapKit</span><span>Education</span></p>
+          </div>
+        </div>
 
-    <section class="contact">
-      <h2>Contact Me</h2>
-      <p><i class="fas fa-envelope"></i> <a href="mailto:ulasakkoyun26@gmail.com">ulasakkoyun26@gmail.com</a></p>
-      <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/ulasakkoyun" target="_blank">linkedin.com/in/ulasakkoyun</a></p>
-      <p><i class="fab fa-github"></i> <a href="https://github.com/ulasakkoyun" target="_blank">github.com/ulasakkoyun</a></p>
+        <div class="project-card">
+          <a class="project-card-link" href="https://github.com/ulasakkoyun/ulasakkoyun.com" target="_blank"
+            rel="noopener noreferrer" aria-label="View source of portfolio">
+            <p class="project-kicker">Web Platform</p>
+            <h3 class="project-title-lg">ulasakkoyun.com</h3>
+            <p>A personal portfolio and content platform built with HTML, CSS, and JavaScript,
+              later extended with a Cloudflare Worker backend for visitor analytics and dynamic APIs. It serves as both
+              my project portfolio and a place to document topics I enjoy. </p>
+            <p class="tags"><span>HTML</span><span>CSS</span><span>JS</span><span>Cloudflare
+                Worker</span><span>D1</span></p>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-wide-panel" id="contact">
+        <div class="contact-wide-header">
+          <p class="project-wide-label">Contact</p>
+          <h3 class="contact-wide-title">Let's connect.</h3>
+          <p class="contact-wide-sub">Feel free to reach out through any of the channels below.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:ulasakkoyun26@gmail.com" class="contact-chip">
+            <i class="fas fa-envelope"></i><span>Email</span>
+          </a>
+          <a href="https://github.com/ulasakkoyun" target="_blank" rel="noopener" class="contact-chip">
+            <i class="fab fa-github"></i><span>GitHub</span>
+          </a>
+          <a href="https://linkedin.com/in/ulasakkoyun" target="_blank" rel="noopener" class="contact-chip">
+            <i class="fab fa-linkedin"></i><span>LinkedIn</span>
+          </a>
+          <a href="https://twitter.com/ulasakkoyun" target="_blank" rel="noopener" class="contact-chip">
+            <i class="fab fa-x-twitter"></i><span>Twitter</span>
+          </a>
+          <a href="https://instagram.com/ulasakkyn" target="_blank" rel="noopener" class="contact-chip">
+            <i class="fab fa-instagram"></i><span>Instagram</span>
+          </a>
+        </div>
+      </div>
     </section>
 
   </main>
 
   <footer>
-    <p>© 2025 Ulas Akkoyun. All rights reserved.</p>
+    <div class="footer-counter">
+      <p id="visit-counter-text"></p>
+    </div>
+    <p>© 2025–2026 Ulaş Akkoyun. All rights reserved.</p>
   </footer>
 
+  <script defer src="scripts/countdown.js"></script>
+  <script defer src="scripts/nav-glass.js"></script>
+  <script defer src="scripts/page-transition.js"></script>
   <script>
     ScrollReveal().reveal('section', {
       delay: 150,
@@ -77,4 +142,5 @@
     });
   </script>
 </body>
+
 </html>

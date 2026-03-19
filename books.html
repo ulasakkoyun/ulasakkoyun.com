@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Books - Ulaş Akkoyun</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <header>
+        <nav class="top-nav" aria-label="Primary">
+            <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="index.html#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+            <a href="blogs.html"><i class="fas fa-pen"></i><span>Blogs</span></a>
+            <a href="movies.html"><i class="fas fa-film"></i><span>Movies</span></a>
+            <a href="series.html"><i class="fas fa-tv"></i><span>Series</span></a>
+            <a href="books.html" class="active" aria-current="page"><i class="fas fa-book"></i><span>Books</span></a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="movies-section">
+            <div class="list-panel content-panel">
+                <div class="list-panel-header">
+                    <div>
+                        <h2>Books</h2>
+                        <p>Books that have influenced me.</p>
+                    </div>
+                    <p class="list-stats" id="books-stats">Loading stats...</p>
+                </div>
+
+                <input id="books-search" class="list-search" type="search" placeholder="Search books by title or author"
+                    aria-label="Search books" />
+
+                <div id="books-grid" class="movies-grid">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-counter">
+            <p id="visit-counter-text"></p>
+        </div>
+        <p>© 2025–2026 Ulaş Akkoyun. All rights reserved.</p>
+    </footer>
+
+    <script defer src="scripts/countdown.js"></script>
+    <script defer src="scripts/nav-glass.js"></script>
+    <script defer src="scripts/page-transition.js"></script>
+    <script defer src="scripts/books.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blogs - Ulaş Akkoyun</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <header>
+        <nav class="top-nav" aria-label="Primary">
+            <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="index.html#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+            <a href="blogs.html" class="active" aria-current="page"><i class="fas fa-pen"></i><span>Blogs</span></a>
+            <a href="movies.html"><i class="fas fa-film"></i><span>Movies</span></a>
+            <a href="series.html"><i class="fas fa-tv"></i><span>Series</span></a>
+            <a href="books.html"><i class="fas fa-book"></i><span>Books</span></a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="movies-section">
+            <div class="list-panel content-panel">
+                <div class="list-panel-header">
+                    <div>
+                        <h2>Blogs</h2>
+                        <p>Thoughts, write-ups and things I find worth sharing.</p>
+                    </div>
+                    <p class="list-stats" id="blogs-stats"></p>
+                </div>
+
+                <input id="blogs-search" class="list-search" type="search" placeholder="Search blog posts..."
+                    aria-label="Search blog posts" />
+
+                <div id="blogs-grid" class="movies-grid">
+                    <p class="empty-message">No blog posts yet. Check back soon!</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-counter">
+            <p id="visit-counter-text"></p>
+        </div>
+        <p>© 2025–2026 Ulaş Akkoyun. All rights reserved.</p>
+    </footer>
+
+    <script defer src="scripts/countdown.js"></script>
+    <script defer src="scripts/nav-glass.js"></script>
+    <script defer src="scripts/page-transition.js"></script>
+</body>
+
+</html>

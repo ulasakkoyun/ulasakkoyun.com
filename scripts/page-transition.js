@@ -2,6 +2,15 @@
     const transitionKey = 'pageTransitionDirection';
     const exitDurationMs = 580;
 
+    function normalizePathname(pathname) {
+        const clean = (pathname || '/').replace(/\/$/, '') || '/';
+        return clean.endsWith('/index.html') ? '/' : clean;
+    }
+
+    function areEquivalentPathnames(a, b) {
+        return normalizePathname(a) === normalizePathname(b);
+    }
+
     function isInternalPageLink(link) {
         if (!link) return false;
         if (link.target && link.target !== '_self') return false;
@@ -13,8 +22,7 @@
         const url = new URL(href, window.location.href);
         if (url.origin !== window.location.origin) return false;
 
-        const samePath = url.pathname === window.location.pathname;
-        if (samePath && url.hash) return false;
+        const samePath = areEquivalentPathnames(url.pathname, window.location.pathname);
 
         return url.pathname.endsWith('.html') || samePath;
     }
@@ -51,9 +59,18 @@
             if (!href) return;
 
             const targetUrl = new URL(href, window.location.href);
-            const isSamePageWithoutHash = targetUrl.pathname === window.location.pathname && !targetUrl.hash;
-            if (isSamePageWithoutHash) {
+            const isSameDocument = areEquivalentPathnames(targetUrl.pathname, window.location.pathname);
+            if (isSameDocument) {
                 event.preventDefault();
+
+                if (targetUrl.hash) {
+                    const targetElement = document.querySelector(targetUrl.hash);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    return;
+                }
+
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return;
             }

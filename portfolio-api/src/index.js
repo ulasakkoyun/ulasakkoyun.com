@@ -102,7 +102,7 @@ async function handleMovies(request, env) {
 	try {
 		try {
 			const result = await env.MOVIES_DB
-				.prepare('SELECT title, year, director FROM movies ORDER BY id ASC')
+				.prepare('SELECT title, year, director FROM movies ORDER BY id DESC')
 				.all();
 
 			const movies = Array.isArray(result.results) ? result.results : [];
@@ -114,7 +114,7 @@ async function handleMovies(request, env) {
 			return json({ movies }, 200, request, env);
 		} catch {
 			const fallbackResult = await env.MOVIES_DB
-				.prepare('SELECT title, year FROM movies ORDER BY id ASC')
+				.prepare('SELECT title, year FROM movies ORDER BY id DESC')
 				.all();
 
 			const movies = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];
@@ -142,7 +142,7 @@ async function handleBooks(request, env) {
 	try {
 		try {
 			const result = await env.BOOKS_DB
-				.prepare('SELECT title, author, year FROM books ORDER BY id ASC')
+				.prepare('SELECT title, author, year FROM books ORDER BY id DESC')
 				.all();
 
 			const books = Array.isArray(result.results) ? result.results : [];
@@ -154,7 +154,7 @@ async function handleBooks(request, env) {
 			return json({ books }, 200, request, env);
 		} catch {
 			const fallbackResult = await env.BOOKS_DB
-				.prepare('SELECT title, author FROM books ORDER BY id ASC')
+				.prepare('SELECT title, author FROM books ORDER BY id DESC')
 				.all();
 
 			const books = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];
@@ -188,7 +188,7 @@ async function handleSeries(request, env) {
 					ELSE CAST(start_year AS TEXT) || '-' || CAST(end_year AS TEXT)
 				END AS year
 			FROM series
-			ORDER BY start_year DESC, title ASC`)
+			ORDER BY id DESC`)
 			.all();
 
 		const series = Array.isArray(result.results) ? result.results : [];
@@ -201,7 +201,7 @@ async function handleSeries(request, env) {
 	} catch {
 		try {
 			const fallbackResult = await env.SERIES_DB
-				.prepare('SELECT title, year FROM series ORDER BY id ASC')
+				.prepare('SELECT title, year FROM series ORDER BY id DESC')
 				.all();
 
 			const series = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];

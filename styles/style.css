@@ -1048,3 +1048,30 @@ footer p {
     margin-left: 0;
   }
 }
+/* Modern Stats UI */
+.list-stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.modern-secondary-text {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .list-stats-container {
+    align-items: flex-start;
+  }
+}

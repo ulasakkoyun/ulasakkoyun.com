@@ -82,13 +82,16 @@ class CollectionManager {
             ? `${totalCount} ${this.statsLabel}`
             : `${visibleCount} of ${totalCount} ${this.dataKey} shown`;
 
-        // Only show secondary text if we have items
-        const hasRecentItems = this.items.length > 0 && recentCount > 0;
-
         statsContainer.innerHTML = `
       <p class="list-stats primary-stat">${mainText}</p>
-      ${hasRecentItems ? `<span class="modern-secondary-text">${recentCount} ${this.dataKey} saved this month</span>` : ''}
     `;
+
+        const recentContainer = document.getElementById(`${this.endpoint}-recent-stats`);
+        if (recentContainer) {
+            // Regardless of count (even if 0), write the sentence with the highlighted number.
+            // We will make the text lowercase/normal case instead of uppercase!
+            recentContainer.innerHTML = `<span class="modern-secondary-text"><span class="visit-count">${recentCount}</span> ${this.dataKey} saved this month</span>`;
+        }
     }
 
     setupSearch() {

@@ -1075,3 +1075,14 @@ footer p {
     align-items: flex-start;
   }
 }
+
+/* Override the secondary text margin when placed under titles */
+[id$="-recent-stats"] .modern-secondary-text {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Override uppercase on recent stats */
+[id$="-recent-stats"] .modern-secondary-text {
+  text-transform: none; /* Revert uppercase from earlier */
+}

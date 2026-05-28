@@ -101,8 +101,9 @@ async function handleMovies(request, env) {
 
 	try {
 		try {
+			0
 			const result = await env.MOVIES_DB
-				.prepare('SELECT title, year, director FROM movies ORDER BY id DESC')
+				.prepare('SELECT title, year, director, created_at FROM movies ORDER BY id DESC')
 				.all();
 
 			const movies = Array.isArray(result.results) ? result.results : [];
@@ -113,17 +114,25 @@ async function handleMovies(request, env) {
 
 			return json({ movies }, 200, request, env);
 		} catch {
-			const fallbackResult = await env.MOVIES_DB
-				.prepare('SELECT title, year FROM movies ORDER BY id DESC')
-				.all();
+			try {
+				const fallbackResult = await env.MOVIES_DB
+					.prepare('SELECT title, year, director FROM movies ORDER BY id DESC')
+					.all();
 
-			const movies = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];
+				const movies = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];
 
-			if (movies.length === 0) {
-				return json({ error: 'Movies table is empty' }, 404, request, env);
+				if (movies.length === 0) {
+					return json({ error: 'Movies table is empty' }, 404, request, env);
+				}
+
+				return json({ movies }, 200, request, env);
+			} catch {
+				const fb = await env.MOVIES_DB
+					.prepare('SELECT title, year FROM movies ORDER BY id DESC')
+					.all();
+				const resultFb = Array.isArray(fb.results) ? fb.results : [];
+				return json({ movies: resultFb }, 200, request, env);
 			}
-
-			return json({ movies }, 200, request, env);
 		}
 	} catch {
 		return json({ error: 'Failed to query movies from D1' }, 500, request, env);
@@ -142,7 +151,7 @@ async function handleBooks(request, env) {
 	try {
 		try {
 			const result = await env.BOOKS_DB
-				.prepare('SELECT title, author, year FROM books ORDER BY id DESC')
+				.prepare('SELECT title, author, year, created_at FROM books ORDER BY id DESC')
 				.all();
 
 			const books = Array.isArray(result.results) ? result.results : [];
@@ -153,17 +162,25 @@ async function handleBooks(request, env) {
 
 			return json({ books }, 200, request, env);
 		} catch {
-			const fallbackResult = await env.BOOKS_DB
-				.prepare('SELECT title, author FROM books ORDER BY id DESC')
-				.all();
+			try {
+				const fallbackResult = await env.BOOKS_DB
+					.prepare('SELECT title, author, year FROM books ORDER BY id DESC')
+					.all();
 
-			const books = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];
+				const books = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];
 
-			if (books.length === 0) {
-				return json({ error: 'Books table is empty' }, 404, request, env);
+				if (books.length === 0) {
+					return json({ error: 'Books table is empty' }, 404, request, env);
+				}
+
+				return json({ books }, 200, request, env);
+			} catch {
+				const fb = await env.BOOKS_DB
+					.prepare('SELECT title, author FROM books ORDER BY id DESC')
+					.all();
+				const resultFb = Array.isArray(fb.results) ? fb.results : [];
+				return json({ books: resultFb }, 200, request, env);
 			}
-
-			return json({ books }, 200, request, env);
 		}
 	} catch {
 		return json({ error: 'Failed to query books from D1' }, 500, request, env);
@@ -186,7 +203,7 @@ async function handleSeries(request, env) {
 					WHEN end_year IS NULL THEN CAST(start_year AS TEXT) || '-'
 					WHEN end_year = start_year THEN CAST(start_year AS TEXT)
 					ELSE CAST(start_year AS TEXT) || '-' || CAST(end_year AS TEXT)
-				END AS year
+				END AS year, created_at
 			FROM series
 			ORDER BY id DESC`)
 			.all();
@@ -200,19 +217,38 @@ async function handleSeries(request, env) {
 		return json({ series }, 200, request, env);
 	} catch {
 		try {
-			const fallbackResult = await env.SERIES_DB
-				.prepare('SELECT title, year FROM series ORDER BY id DESC')
+			const fallbackResult1 = await env.SERIES_DB
+				.prepare(`SELECT title,
+					CASE
+						WHEN end_year IS NULL THEN CAST(start_year AS TEXT) || '-'
+						WHEN end_year = start_year THEN CAST(start_year AS TEXT)
+						ELSE CAST(start_year AS TEXT) || '-' || CAST(end_year AS TEXT)
+					END AS year
+				FROM series
+				ORDER BY id DESC`)
 				.all();
 
-			const series = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];
-
+			const series = Array.isArray(fallbackResult1.results) ? fallbackResult1.results : [];
 			if (series.length === 0) {
 				return json({ error: 'Series table is empty' }, 404, request, env);
 			}
-
 			return json({ series }, 200, request, env);
 		} catch {
-			return json({ error: 'Failed to query series from D1' }, 500, request, env);
+			try {
+				const fallbackResult = await env.SERIES_DB
+					.prepare('SELECT title, year FROM series ORDER BY id DESC')
+					.all();
+
+				const series = Array.isArray(fallbackResult.results) ? fallbackResult.results : [];
+
+				if (series.length === 0) {
+					return json({ error: 'Series table is empty' }, 404, request, env);
+				}
+
+				return json({ series }, 200, request, env);
+			} catch {
+				return json({ error: 'Failed to query series from D1' }, 500, request, env);
+			}
 		}
 	}
 }
